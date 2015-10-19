@@ -3,13 +3,13 @@
 <% if current_user != nil %>
 <%= link_to "Submit new question", new_question_path %>
 <br>
-<% if current_user.username == "BUNKED" %>
+<% if current_user.admin == true %>
   Total # of users on this site: <%= @users.length %>
 <% else %>
   waaaah
 <% end %>
 <% else %>
-  <h3>You must log in to ask a question...bitch</h3>
+  <h3>You must log in to ask a question.</h3>
 <% end %>
 
 <% @questions.each do |question| %>
@@ -24,6 +24,3 @@
 <br>
 <br>
 <br>
-<% @users.each do |user| %>
-  <%= link_to user.username, user_path(user) %>
-<% end %>

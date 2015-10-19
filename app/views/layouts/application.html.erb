@@ -7,23 +7,46 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="nav navbar navbar-inverse">
-    <a href='/'><h3>Whack Overflow</h3></a>
 
-    <% if current_user != nil %>
-    <h3><%= link_to "Log Out", log_out_path %></h3>
-    <h3 id='username'><%= current_user.username %></h3>
-    <% else %>
-    <h3><%= link_to 'Sign Up', new_user_path %></h3>
-    <h3><%= link_to "Log In", log_in_path %></h3>
-    <% end %>
 
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <a class="custom-brand navbar-brand" href="/"><img class='img-stack' src="/assets/stackoverflow.jpg" width="150px" alt="" /></a>
+
+    </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user != nil %>
+          <% if current_user.admin === true %>
+          <li class="username">Total # of users on this site: <%= @users.length %></li>
+          <li><%= link_to "Manage users", users_path %></li>
+          <% end %>
+          <li><%= link_to "Log Out", log_out_path %></li>
+          <li class='username'><%= current_user.username %></li>
+        <% else %>
+          <li><%= link_to 'Sign Up', new_user_path %></li>
+          <li><%= link_to "Log In", log_in_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
   </div>
     <% if notice %>
       <p class='alert alert-success'><%= notice %></p>
     <% end %>
-
-
 <%= yield %>
 
 </body>

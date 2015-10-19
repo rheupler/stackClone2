@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @answer = Answer.new
   end
 
   def create
@@ -18,6 +19,9 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @questions = Question.all
+    @answers = @question.answers.all
+    # @answer = Answer.find(params[:id])
   end
 
   def edit
@@ -39,7 +43,7 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
-  
+
 private
   def question_params
     params.require(:question).permit(:title, :content)

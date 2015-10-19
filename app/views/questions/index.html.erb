@@ -1,0 +1,8 @@
+<h1>HELLO EVERYONE</h1>
+
+<%= link_to "Submit new question", new_question_path %>
+<br>
+
+<% @questions.each do |question| %>
+  <%= link_to question.title, question_path(question) %>
+<% end %>

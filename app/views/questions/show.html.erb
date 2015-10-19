@@ -10,6 +10,8 @@
 
 <% @question.answers.each do |answer| %>
 <ul>
-  <li><%= answer.body %></li>
+  <li><%= answer.body %>
+  <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %>
+  <%= link_to 'Delete Answer', question_answer_path(@question, answer), data: {confirm: "Are You Sure?", method: "delete"} %></li>
 </ul>
 <% end %>

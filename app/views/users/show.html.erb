@@ -4,7 +4,7 @@
 
 <% if current_user.admin == true %>
   ADMINING N SHIT
-
+  <%= link_to 'Delete User', user_path(@user), data: {confirm: "Are You Sure?", method: "delete"} %>
   <%= render 'form2' %>
 
 <% else %>

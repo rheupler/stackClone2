@@ -3,3 +3,4 @@
 <%= @question.content %>
 
 <%= link_to 'Edit Question', edit_question_path(@question) %>
+<%= link_to 'Delete Question', question_path(@question), data: {confirm: "Are You Sure?", method: "delete"} %>

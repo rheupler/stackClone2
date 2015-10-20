@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019220544) do
+ActiveRecord::Schema.define(version: 20151020172834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"

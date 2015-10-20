@@ -1,3 +1,7 @@
+<h2>Current registered users:</h2>
 <% @users.each do |user| %>
-  <%= link_to user.username, user_path(user) %>
+<ul>
+
+  <li><%= link_to user.username, user_path(user) %></li>
+</ul>
 <% end %>

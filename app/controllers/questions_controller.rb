@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.where(updated_at: (Time.now - 24.hours)..Time.now)
-    @users = User.all  
+    @users = User.all
   end
 
   def all_questions

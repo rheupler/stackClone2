@@ -7,14 +7,14 @@
 
 
 <% if current_user != nil %>
+  <%= link_to 'Submit Answer', new_question_answer_path(@question) %>
   <% @question.answers.each do |answer| %>
   <ul>
     <li><%= answer.body %>
     <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %>
     <%= link_to 'Delete Answer', question_answer_path(@question, answer), data: {confirm: "Are You Sure?", method: "delete"} %></li>
   </ul>
-<%= link_to 'Submit Answer', new_question_answer_path(@question) %>
-<% end %>
+  <% end %>
   <% else %>
   <h3>You must log in to see questions :(</h3>
 <% end %>

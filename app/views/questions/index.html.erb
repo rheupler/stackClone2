@@ -15,14 +15,14 @@
   <tbody>
     <tr class="eachRow">
       <td><%= link_to question.title, question_path(question) %> created on <%= question.created_at.strftime("%a %D at %I:%M:%S") %></td>
+        </button>
+      <% end %>
     </tr>
-    <% end %>
   </tbody>
 </table>
 
-<h3>Total questions in the last 24hrs: <%= @questions.length %></h3>
+<h3>Total questions in the last 24 hrs: <%= @questions.length %></h3>
 <%= link_to 'View All Questions', all_questions_path %>
 
-<br>
 <br>
 <br>

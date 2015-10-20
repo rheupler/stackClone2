@@ -4,10 +4,15 @@
 <br>
 <br>
 <%= link_to upvote_question_path(@question), method: :put do %>
-  <button name="button" class='btn btn-info'>Upvote</button>
+  <button name="button" class='btn-xs btn-info'>Upvote</button>
   <span class='badge'><%= @question.get_upvotes.size %></span>
   </button>
 <% end %>
+<!-- <%= link_to downvote_question_path(@question), method: :put do %>
+  <button name="button" class='btn btn-info'>Downvote</button>
+  <span class='badge'><%= @question.get_downvotes.size %></span>
+  </button>
+<% end %> -->
 
 <%= link_to 'Edit Question', edit_question_path(@question) %>
 <%= link_to 'Delete Question', question_path(@question), data: {confirm: "Are You Sure?", method: "delete"} %>
@@ -26,5 +31,5 @@
   </ul>
   <% end %>
   <% else %>
-  <h3>You must log in to see questions :(</h3>
+  <h3>You must log in to see answers :(</h3>
 <% end %>

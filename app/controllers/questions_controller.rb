@@ -2,16 +2,19 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.where(updated_at: (Time.now - 24.hours)..Time.now)
     @users = User.all
+    @questions = Question.all.order(:cached_votes_up => :desc)
   end
 
   def upvote
-    @question.update_from current_user
-    redirect_to questions_path
+    @question = Question.find(params[:id])
+    @question.vote_by :voter => current_user
+    redirect_to question_path
   end
 
   def downvote
-    @question.downvote_from current_user
-    redirect_to question_path(@question)
+    @question = Question.find(params[:id])
+    @question.vote_by :voter => current_user
+    redirect_to question_path
   end
 
   def all_questions

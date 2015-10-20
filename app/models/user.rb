@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_voter
-  validates :email, uniqueness: true
+  # validates :email, uniqueness: true
   validates :username, uniqueness: true
   attr_accessor :password
   validates_confirmation_of :password

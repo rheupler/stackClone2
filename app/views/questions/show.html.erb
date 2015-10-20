@@ -1,17 +1,26 @@
-<%= @question.title %>
+<h3><%= @question.title %></h3>
 <br>
 <%= @question.content %>
-<%= link_to('vote for this post!', vote_up_post_path(@post), :method => :post) %>
+<br>
+<br>
+<%= link_to upvote_question_path(@question), method: :put do %>
+  <button name="button" class='btn btn-info'>Upvote</button>
+  <span class='badge'><%= @question.get_upvotes.size %></span>
+  </button>
+<% end %>
 
 <%= link_to 'Edit Question', edit_question_path(@question) %>
 <%= link_to 'Delete Question', question_path(@question), data: {confirm: "Are You Sure?", method: "delete"} %>
 
 
 <% if current_user != nil %>
-  <%= link_to 'Submit Answer', new_question_answer_path(@question) %>
+<br>
+<br>
+  <h4><%= link_to 'Submit Answer', new_question_answer_path(@question) %></h4>
+
   <% @question.answers.each do |answer| %>
   <ul>
-    <li><%= answer.body %>
+    <li><%= answer.body %> Answered by: <%= User.find(answer.user_id).username %><br>
     <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %>
     <%= link_to 'Delete Answer', question_answer_path(@question, answer), data: {confirm: "Are You Sure?", method: "delete"} %></li>
   </ul>

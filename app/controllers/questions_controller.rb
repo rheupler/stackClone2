@@ -4,13 +4,14 @@ class QuestionsController < ApplicationController
     @users = User.all
   end
 
-  def vote_up
-    begin
-      current_user.vote_for(@post = Post.find(params[:id]))
-      render :nothing => true, :status => 200
-    rescue ActiveRecord::RecordInvalid
-      render :nothing => true, :status => 404
-    end
+  def upvote
+    @question.update_from current_user
+    redirect_to questions_path
+  end
+
+  def downvote
+    @question.downvote_from current_user
+    redirect_to question_path(@question)
   end
 
   def all_questions

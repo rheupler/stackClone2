@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'hirb'
 gem 'bcrypt-ruby', '~> 3.1.5', require: "bcrypt"
+gem 'acts_as_votable'
 
 
 group :development do

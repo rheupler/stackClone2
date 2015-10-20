@@ -14,7 +14,7 @@
   <% @questions.each do |question| %>
   <tbody>
     <tr class="eachRow">
-      <td><%= link_to question.title, question_path(question) %> created on <%= question.created_at.strftime("%a %D at %I:%M:%S") %></td>
+      <td><%= link_to question.title, question_path(question) %> created on <%= question.created_at.strftime("%a %D at %I:%M:%S") %> with <%= question.get_upvotes.size %> upvotes</td>
         </button>
       <% end %>
     </tr>

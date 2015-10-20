@@ -15,8 +15,8 @@ class AddCachedVotesToPosts < ActiveRecord::Migration
     add_index  :questions, :cached_weighted_total
     add_index  :questions, :cached_weighted_average
 
-    # Uncomment this line to force caching of existing votes
-    # Post.find_each(&:update_cached_votes)
+
+    Post.find_each(&:update_cached_votes)
   end
 
   def self.down

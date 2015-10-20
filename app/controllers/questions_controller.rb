@@ -1,8 +1,16 @@
 class QuestionsController < ApplicationController
+
   def index
-    @questions = Question.where(updated_at: (Time.now - 24.hours)..Time.now)
+    # @questions = Question.where(updated_at: (Time.now - 24.hours)..Time.now)
     @users = User.all
     @questions = Question.all.order(:cached_votes_up => :desc)
+  end
+
+  def show
+    @question = Question.find(params[:id])
+    @questions = Question.all
+    @answers = @question.answers.all
+    # @answer = Answer.find(params[:id])
   end
 
   def upvote
@@ -35,12 +43,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def show
-    @question = Question.find(params[:id])
-    @questions = Question.all
-    @answers = @question.answers.all
-    # @answer = Answer.find(params[:id])
-  end
 
   def edit
     @question = Question.find(params[:id])
